@@ -1,4 +1,4 @@
-import { Note } from 'modules/notes/infra/orm/entities/Note';
+import { Note } from '../../../../notes/infra/orm/entities/Note';
 import { v4 as uuidV4 } from 'uuid'
 
 class User {

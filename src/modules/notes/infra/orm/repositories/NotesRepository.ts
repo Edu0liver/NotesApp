@@ -1,5 +1,5 @@
-import { ICreateNoteDTO } from "modules/notes/dtos/ICreateNoteDTO";
-import { INotesRepository } from "modules/notes/repositories/INotesRepository";
+import { ICreateNoteDTO } from "../../../dtos/ICreateNoteDTO";
+import { INotesRepository } from "../../../repositories/INotesRepository";
 import { Note } from "../entities/Note";
 
 

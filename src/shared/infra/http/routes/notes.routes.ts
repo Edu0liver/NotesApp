@@ -1,7 +1,10 @@
 import express from 'express';
+import { CreateNoteController } from '../../../../modules/notes/services/createNote/CreateNoteController';
 
 const notesRoutes = express();
 
-notesRoutes.post("/",)
+const createNoteController = new CreateNoteController();
+
+notesRoutes.post("/", createNoteController.handle);
 
 export { notesRoutes };
