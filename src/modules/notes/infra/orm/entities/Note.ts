@@ -3,8 +3,9 @@ import { v4 as uuidV4 } from 'uuid'
 
 class Note {
     id: string;
+    name: string;
     body: string;
-    user: User;
+    user_id: User;
 
     constructor(){
         if(!this.id){
