@@ -1,3 +1,4 @@
+import { inject, injectable } from "tsyringe";
 import { INotesRepository } from "../../repositories/INotesRepository";
 
 interface IRequest {
@@ -6,9 +7,11 @@ interface IRequest {
     name: string;
 }
 
+@injectable()
 class EditNoteService {
     constructor(
-        private notesRepository: INotesRepository
+        @inject("NotesRepository")
+        private notesRepository: INotesRepository,
     ){}
 
     async execute({ id, name, body }: IRequest): Promise<void> {

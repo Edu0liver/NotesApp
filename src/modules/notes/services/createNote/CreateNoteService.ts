@@ -1,12 +1,15 @@
+import { inject, injectable } from "tsyringe";
 import { IUsersRepository } from "../../../accounts/repositories/IUsersRepository";
 import { ICreateNoteDTO } from "../../dtos/ICreateNoteDTO";
 import { INotesRepository } from "../../repositories/INotesRepository";
 
-
+@injectable()
 class CreateNoteService {
 
     constructor(
+        @inject("NotesRepository")
         private notesRepository: INotesRepository,
+        @inject("UsersRepository")
         private usersRepository: IUsersRepository
     ){}
 

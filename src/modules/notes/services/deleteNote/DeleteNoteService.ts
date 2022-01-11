@@ -1,9 +1,12 @@
+import { inject, injectable } from "tsyringe";
 import { INotesRepository } from "../../repositories/INotesRepository";
 
+@injectable()
 class DeleteNoteService {
 
     constructor(
-        private notesRepository: INotesRepository
+        @inject("NotesRepository")
+        private notesRepository: INotesRepository,
     ){}
 
     async execute(note_id: string): Promise<void> {
