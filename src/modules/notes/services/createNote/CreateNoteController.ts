@@ -4,7 +4,7 @@ import { CreateNoteService } from './CreateNoteService';
 
 class CreateNoteController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id } = request.params; // request.user
+        const { id } = request.user; // request.user
         const { name, body } = request.body;
 
         const createNoteService = container.resolve(CreateNoteService);
