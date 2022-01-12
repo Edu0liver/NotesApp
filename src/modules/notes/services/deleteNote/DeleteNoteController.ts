@@ -4,7 +4,7 @@ import { DeleteNoteService } from "./DeleteNoteService";
 
 class DeleteNoteController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id } = request.user;
+        const { id } = request.params;
 
         const deleteNoteService = container.resolve(DeleteNoteService);
 

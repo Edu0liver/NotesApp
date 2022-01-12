@@ -4,7 +4,7 @@ import { EditNoteService } from './EditNoteService';
 
 class EditNoteController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id } = request.user;
+        const { id } = request.params;
         const { body, name } = request.body;
 
         const editNoteService = container.resolve(EditNoteService);
