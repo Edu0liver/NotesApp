@@ -1,10 +1,10 @@
-import { Request, response, Response } from "express"
+import { Request, Response } from "express"
 import { container } from "tsyringe";
 import { AuthenticateUserService } from "./AuthenticateUserService";
 
 class AuthenticateUserController {
-    async handle(req: Request, res: Response): Promise<Response> {
-        const { email, password } = req.body;
+    async handle(request: Request, response: Response): Promise<Response> {
+        const { email, password } = request.body;
 
         const authenticateUserService = container.resolve(AuthenticateUserService);
 

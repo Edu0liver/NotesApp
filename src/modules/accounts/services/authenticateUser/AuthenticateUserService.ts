@@ -9,12 +9,11 @@ interface IRequest {
 }
 
 interface IResponse {
+    token: string;
     user: {
         name: string;
         email: string;
     };
-    token: string;
-
 }
 
 @injectable()
@@ -27,30 +26,29 @@ class AuthenticateUserService {
 
     async execute({ email, password }: IRequest ): Promise<IResponse> {
         const user = await this.usersRepository.findByEmail(email);
-        const passwordMatch = await compare(password, user.password);
+        const passwordMatch = compare(password, user.password);
 
         if(!user){
-            throw new Error("Email or password incorrect !")
+            throw new Error("Email is incorrect!");
         }
 
         if(!passwordMatch){
-            throw new Error("Email or password incorrect !")
+            throw new Error("Password is incorrect!");
         }
 
         const token = sign({}, "123", {
             subject: user.id,
             expiresIn: "1d"
-        });
-
-        const authResponse: IResponse = {
+        })
+        const authReturn: IResponse = {
             token,
             user: {
                 name: user.name,
-                email: user.email,
+                email: user.email
             }
         }
 
-        return authResponse;
+        return authReturn;
     }
 }
 

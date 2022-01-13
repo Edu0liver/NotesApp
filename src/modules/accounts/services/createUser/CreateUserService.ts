@@ -12,7 +12,7 @@ class CreateUserService {
     ){}
 
     async execute({ email, name, password }: ICreateUserDTO): Promise<void> {
-        const userExists = this.usersRepository.findByEmail(email);
+        const userExists = await this.usersRepository.findByEmail(email);
         const passwordHash = await hash(password, 8);
 
         if(userExists) {

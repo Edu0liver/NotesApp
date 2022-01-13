@@ -7,7 +7,7 @@ class NotesRepository implements INotesRepository {
     
     private notes: Note[] = [];
     
-    async create({ user_id, name, body }: ICreateNoteDTO): Promise<void> {
+    async create({ user_id, name, body }: ICreateNoteDTO): Promise<Note> {
         const note = new Note();
         
         Object.assign(note, {
@@ -17,6 +17,8 @@ class NotesRepository implements INotesRepository {
         })
         
         this.notes.push(note);
+
+        return note;
     }
     
     async edit(id: string, body: string, name: string): Promise<Note> {
